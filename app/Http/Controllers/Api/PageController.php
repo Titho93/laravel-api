@@ -14,4 +14,11 @@ class PageController extends Controller
 
         return response()->json($projects);
     }
+
+    public function getProjectById($id)
+    {
+
+        $project = Project::where('id', $id)->with('tecnologies', 'type')->first();
+        return response()->json($project);
+    }
 }
